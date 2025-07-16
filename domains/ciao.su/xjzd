@@ -1,0 +1,24 @@
+{
+  "description": "个人博客网站",
+  "owner": {
+    "name": "aliliu",
+    "github": "aliliu311",
+    "email": "aliliu311@gmail.com"
+  },
+  "records": [
+    {
+      "type": "A",
+      "name": "@",
+      "content": "192.168.0.106",
+      "ttl": 3600,
+      "proxied": false
+    },
+    {
+      "type": "CNAME",
+      "name": "www",
+      "content": "xxx.xxx",
+      "ttl": 3600,
+      "proxied": false
+    }
+  ]
+}
