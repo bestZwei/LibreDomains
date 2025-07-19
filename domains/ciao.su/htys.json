@@ -12,13 +12,4 @@
       "content": "192.168.1.2",
       "ttl": 3600,
       "proxied": false
-    },
-    {
-      "type": "CNAME",
-      "name": "www",
-      "content": "xxx.xxx",
-      "ttl": 3600,
-      "proxied": false
-    }
-  ]
-}
+    }, 
