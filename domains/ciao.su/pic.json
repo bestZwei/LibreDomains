@@ -7,8 +7,8 @@
   "records": [
     {
       "type": "CNAME",
-      "name": "www",
-      "content": "koyeb-16u.pages.dev",
+      "name": "@",
+      "content": "92a59758.pic.sld.tw.dnsoe3.com",
       "ttl": 3600,
       "proxied": true
     }
