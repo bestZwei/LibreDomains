@@ -1,0 +1,31 @@
+{
+  "description": "WayneのWorld",
+  "owner": {
+    "name": "Wayne",
+    "github": "Waynenet",
+    "email": "way8941@gmail.com"
+  },
+  "records": [
+    {
+      "type": "CNAME",
+      "name": "@",
+      "content": "waynenet.pages.dev",
+      "ttl": 3600,
+      "proxied": true
+    },
+    {
+      "type": "CNAME",
+      "name": "nav",
+      "content": "wnav.pages.dev",
+      "ttl": 3600,
+      "proxied": true
+    },
+    {
+      "type": "CNAME",
+      "name": "news",
+      "content": "wnews.pages.dev",
+      "ttl": 3600,
+      "proxied": true
+    }
+  ]
+}

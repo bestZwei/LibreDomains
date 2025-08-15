@@ -2,14 +2,16 @@ name: 域名健康检查
 
 on:
   schedule:
-    - cron: '0 */6 * * *'  # 每6小时运行一次
-  workflow_dispatch:
+    - cron: '0 */12 * * *'  # 每12小时运行一次
+  workflow_dispatch:  # 支持手动触发
 
 jobs:
   health-check:
+    # 添加仓库检查，确保只在主仓库运行
+    if: github.repository == 'bestzwei/LibreDomains'
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
       actions: read
     steps:
       - name: 检出代码
@@ -24,23 +26,49 @@ jobs:
       - name: 安装依赖
         run: pip install requests dnspython
         
-      - name: 运行健康检查
+      - name: 运行域名健康检查
         run: |
-          python scripts/health/domain_health.py --output health_report.md
+          # 设置 Python 路径以便正确导入模块
+          export PYTHONPATH=$PYTHONPATH:$(pwd)
           
-      - name: 更新健康报告
+          echo "🚀 开始域名健康检查..."
+          echo "📅 检查时间: $(date '+%Y-%m-%d %H:%M:%S UTC')"
+          echo "🔧 触发方式: ${{ github.event_name }}"
+          echo "📍 仓库: ${{ github.repository }}"
+          echo ""
+          
+          # 运行健康检查，只显示摘要信息
+          if python scripts/health/domain_health.py --summary-only; then
+            echo ""
+            echo "✅ 域名健康检查完成"
+            exit 0
+          else
+            echo ""
+            echo "⚠️ 发现域名健康问题，请查看上方详细信息"
+            echo "💡 提示: 可以手动运行检查获取更多详细信息："
+            echo "   python scripts/health/domain_health.py"
+            exit 1
+          fi
+        
+      - name: 检查失败通知
+        if: failure()
         run: |
-          # 将报告复制到 docs 目录
-          cp health_report.md docs/health_report.md
+          echo "❌ 域名健康检查失败"
+          echo "📋 可能的原因:"
+          echo "  1. DNS 解析问题"
+          echo "  2. 网络连接问题" 
+          echo "  3. 域名配置错误"
+          echo "  4. 服务器响应超时"
+          echo ""
+          echo "🔧 建议操作:"
+          echo "  1. 检查域名配置文件"
+          echo "  2. 验证 DNS 记录设置"
+          echo "  3. 手动运行健康检查脚本进行调试"
           
-          # 提交变更
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add docs/health_report.md
-          git commit -m "更新域名健康状态报告" || echo "No changes to commit"
-          
-      - name: 推送更新
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+      - name: Fork 仓库提示
+        if: github.repository != 'bestzwei/LibreDomains'
+        run: |
+          echo "ℹ️ 此工作流仅在主仓库 bestzwei/LibreDomains 中运行"
+          echo "📝 Fork 仓库无需运行域名健康检查"
+          echo "🔍 如需测试域名配置，请使用验证脚本："
+          echo "   python scripts/health/domain_health.py --help"

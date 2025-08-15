@@ -1,0 +1,23 @@
+{
+  "owner": {
+    "name": "linwhite",
+    "github": "00ye",
+    "email": "whitesky2022@163.com"
+  },
+  "records": [
+    {
+      "type": "CNAME",
+      "name": "blog",
+      "content": "blog.000k.de",
+      "ttl": 3600,
+      "proxied": false
+    },
+    {
+      "type": "CNAME",
+      "name": "www",
+      "content": "000k.de",
+      "ttl": 3600,
+      "proxied": false
+    }
+  ]
+}

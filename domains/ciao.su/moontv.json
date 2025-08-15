@@ -1,0 +1,16 @@
+{
+  "owner": {
+    "name": "zwei",
+    "github": "bestZwei", 
+    "email": "post@zwei.de.eu.org"
+  },
+  "records": [
+    {
+      "type": "CNAME",
+      "name": "@",
+      "content": "d2bcb5a4c74ddb83.vercel-dns-017.com",
+      "ttl": 3600,
+      "proxied": false
+    }
+  ]
+}

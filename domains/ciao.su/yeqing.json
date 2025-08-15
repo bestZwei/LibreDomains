@@ -1,0 +1,17 @@
+{
+  "description": "夜轻的主页",
+  "owner": {
+    "name": "夜轻",
+    "github": "Yeqingky",
+    "email": "yeqingky@gmail.com"
+  },
+  "records": [
+    {
+      "type": "CNAME",
+      "name": "yeqing",
+      "content": "home-vue-bi1.pages.dev",
+      "ttl": 3600,
+      "proxied": false
+    }
+  ]
+}

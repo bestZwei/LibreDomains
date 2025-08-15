@@ -35,6 +35,7 @@ LibreDomains 是一个开源的二级域名分发服务，允许用户通过 Git
 
 ```json
 {
+  "description": "个人博客网站",
   "owner": {
     "name": "你的名字",
     "github": "你的GitHub用户名",
@@ -46,14 +47,14 @@ LibreDomains 是一个开源的二级域名分发服务，允许用户通过 Git
       "name": "@",
       "content": "xxx.xxx.xxx.xxx",
       "ttl": 3600,
-      "proxied": true
+      "proxied": false
     },
     {
       "type": "CNAME",
       "name": "www",
-      "content": "xxx.com",
+      "content": "xxx.xxx",
       "ttl": 3600,
-      "proxied": true
+      "proxied": false
     }
   ]
 }
@@ -70,7 +71,7 @@ LibreDomains 是一个开源的二级域名分发服务，允许用户通过 Git
 ### 规则
 
 1. 子域名必须由小写字母、数字和连字符组成
-2. 子域名长度在 2-63 个字符之间
+2. 子域名长度在 3-63 个字符之间
 3. 子域名不能以连字符开头或结尾
 4. 一个 GitHub 用户最多可以申请 3 个子域名
 5. 每个子域名最多可以有 10 个 DNS 记录
@@ -100,6 +101,7 @@ LibreDomains 是一个开源的二级域名分发服务，允许用户通过 Git
 - **[管理员指南](docs/admin-guide.md)** - 管理员操作和维护指南
 - **[技术文档](docs/technical-doc.md)** - 项目技术架构和实现细节
 - **[项目实施总结](docs/implementation-summary.md)** - 项目功能清单和架构概览
+- **[服务条款](docs/terms-of-service.md)** - 服务使用条款和用户协议
 
 ## 贡献代码
 

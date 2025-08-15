@@ -24,15 +24,32 @@
             </nav>
         </div>
     </header>
-
+    
     <main>
         <section class="hero">
             <div class="container">
-                <h2>免费获得你的专属二级域名</h2>
-                <p>通过 GitHub Pull Request 快速申请和管理二级域名，完全开源、免费使用</p>
-                <div class="hero-actions">
-                    <a href="#guide" class="btn btn-primary">开始申请</a>
-                    <a href="https://github.com/bestzwei/LibreDomains" target="_blank" class="btn btn-secondary">查看源码</a>
+                <div class="hero-content">
+                    <h2>免费获得你的专属二级域名</h2>
+                    <p>通过 GitHub Pull Request 快速申请和管理二级域名，完全开源、免费使用</p>
+                    <div class="hero-actions">
+                        <a href="#domains" class="btn btn-primary">立即查询</a>
+                        <a href="#guide" class="btn btn-secondary">申请指南</a>
+                        <a href="https://github.com/bestzwei/LibreDomains" target="_blank" class="btn btn-outline">GitHub</a>
+                    </div>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="heroTotalDomains">-</span>
+                        <span class="stat-label">已注册域名</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2</span>
+                        <span class="stat-label">可用主域名</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">1-5</span>
+                        <span class="stat-label">分钟生效</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -59,7 +76,7 @@
                     <div class="feature-card">
                         <div class="feature-icon">⚡</div>
                         <h3>快速生效</h3>
-                        <p>域名记录通常在 5-15 分钟内生效</p>
+                        <p>域名记录通常在 1-5 分钟内生效</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">🛠️</div>
@@ -77,107 +94,131 @@
 
         <section id="domains" class="domains">
             <div class="container">
-                <h2>可用域名</h2>
-                <div class="domains-grid">
-                    <div class="domain-card available">
-                        <h3>ciao.su</h3>
-                        <span class="status">✅ 可用</span>
-                        <p>主要域名，正在开放申请</p>
-                    </div>
-                    <div class="domain-card paused">
-                        <h3>ciallo.de</h3>
-                        <span class="status">⏸️ 暂停开放</span>
-                        <p>备用域名，暂时不开放申请</p>
-                    </div>
-                </div>
+                <h2>子域名查询</h2>
+                <p class="section-description">检查你想要的子域名是否可用，查看已注册域名的详细信息</p>
 
-                <!-- 新增：子域名检测功能 -->
+                <!-- 子域名检测功能 -->
                 <div class="subdomain-checker">
-                    <h3>🔍 检测子域名可用性</h3>
-                    <p>输入你想要的子域名，我们会检测是否可以申请</p>
                     
                     <div class="checker-form">
+                        <div class="domain-selector">
+                            <label for="domainSelect">主域名：</label>
+                            <select id="domainSelect" class="domain-select">
+                                <option value="ciao.su" data-status="available">ciao.su</option>
+                                <option value="ciallo.de" data-status="paused">ciallo.de (暂停)</option>
+                            </select>
+                        </div>
+
                         <div class="input-group">
-                            <input type="text" id="subdomainInput" placeholder="输入子域名" maxlength="63">
-                            <span class="domain-suffix">.ciao.su</span>
-                            <button id="checkButton" class="btn btn-primary">检测</button>
+                            <input type="text" id="subdomainInput" placeholder="输入子域名（3-63字符）" maxlength="63">
+                            <span class="domain-suffix" id="domainSuffix">.ciao.su</span>
+                            <button id="checkButton" class="btn btn-check">检测</button>
                         </div>
                         
                         <div class="checker-result" id="checkerResult">
-                            <div class="result-icon"></div>
-                            <div class="result-text"></div>
-                            <div class="result-details"></div>
-                        </div>
-                        
-                        <div class="checker-stats">
-                            <div class="stat-item">
-                                <span class="stat-number" id="totalDomains">-</span>
-                                <span class="stat-label">已注册域名</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number" id="availableDomains">∞</span>
-                                <span class="stat-label">可申请域名</span>
+                            <div class="result-content">
+                                <div class="result-header">
+                                    <div class="result-icon"></div>
+                                    <div class="result-status">
+                                        <h4 class="result-title"></h4>
+                                        <p class="result-subtitle"></p>
+                                    </div>
+                                </div>
+                                <div class="result-details">
+                                    <div class="domain-info" id="domainInfo">
+                                        <h5>🔍 域名详情</h5>
+                                        <div class="info-grid">
+                                            <div class="info-item">
+                                                <span class="info-label">域名</span>
+                                                <span class="info-value" id="domainName">-</span>
+                                            </div>
+                                            <div class="info-item">
+                                                <span class="info-label">状态</span>
+                                                <span class="info-value" id="domainStatus">-</span>
+                                            </div>
+                                            <div class="info-item">
+                                                <span class="info-label">注册时间</span>
+                                                <span class="info-value" id="registrationDate">-</span>
+                                            </div>
+                                            <div class="info-item">
+                                                <span class="info-label">所有者</span>
+                                                <span class="info-value" id="domainOwner">-</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="recent-domains">
-                        <h4>最近注册的域名</h4>
-                        <div class="domains-list" id="recentDomainsList">
-                            <div class="loading">正在加载...</div>
+                    <div class="stats-and-recent">
+                        <div class="checker-stats">
+                            <div class="stat-card">
+                                <span class="stat-number" id="totalDomains">-</span>
+                                <span class="stat-label">当前域名</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">∞</span>
+                                <span class="stat-label">可申请</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number" id="activeDomains">-</span>
+                                <span class="stat-label">全部注册</span>
+                            </div>
+                        </div>
+
+                        <div class="recent-domains">
+                            <h4>最近注册</h4>
+                            <div class="domains-grid" id="recentDomainsList">
+                                <div class="loading">正在加载...</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
+        
         <section id="guide" class="guide">
             <div class="container">
                 <h2>申请指南</h2>
-                <div class="steps">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h3>Fork 仓库</h3>
-                            <p>访问 <a href="https://github.com/bestzwei/LibreDomains" target="_blank">GitHub 仓库</a> 并 Fork 到你的账户</p>
+                <div class="guide-content">
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Fork 仓库</h3>
+                                <p>访问 <a href="https://github.com/bestzwei/LibreDomains" target="_blank">GitHub 仓库</a> 并 Fork 到你的账户</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>创建配置文件</h3>
+                                <p>在 <code>domains/ciao.su/</code> 目录下创建 JSON 配置文件</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>填写配置并提交 PR</h3>
+                                <p>按照指定格式填写域名配置信息，提交 Pull Request</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>域名生效</h3>
+                                <p>PR 合并后，域名记录将在几分钟内生效</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>创建配置文件</h3>
-                            <p>在 <code>domains/ciao.su/</code> 目录下创建 JSON 配置文件</p>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h3>填写配置</h3>
-                            <p>按照指定格式填写域名配置信息</p>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">4</div>
-                        <div class="step-content">
-                            <h3>提交 PR</h3>
-                            <p>提交 Pull Request 并等待自动检查和审核</p>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">5</div>
-                        <div class="step-content">
-                            <h3>域名生效</h3>
-                            <p>PR 合并后，域名记录将在几分钟内生效</p>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="config-example">
-                    <h3>配置文件示例</h3>
-                    <pre><code>{
+                    <div class="config-example">
+                        <h3>配置文件示例</h3>
+                        <pre><code>{
   "owner": {
     "name": "你的名字",
-    "github": "你的GitHub用户名",
+    "github": "你的GitHub用户名", 
     "email": "你的邮箱"
   },
   "records": [
@@ -186,47 +227,38 @@
       "name": "@",
       "content": "185.199.108.153",
       "ttl": 3600,
-      "proxied": true
-    },
-    {
-      "type": "CNAME",
-      "name": "www",
-      "content": "你的GitHub用户名.github.io",
-      "ttl": 3600,
-      "proxied": true
+      "proxied": false
     }
   ]
 }</code></pre>
+                    </div>
                 </div>
-            </div>
-        </section>
 
-        <section class="rules">
-            <div class="container">
-                <h2>申请规则</h2>
-                <div class="rules-grid">
-                    <div class="rule-card">
-                        <h3>域名格式</h3>
-                        <ul>
-                            <li>小写字母、数字和连字符组成</li>
-                            <li>长度在 2-63 个字符之间</li>
-                            <li>不能以连字符开头或结尾</li>
-                        </ul>
-                    </div>
-                    <div class="rule-card">
-                        <h3>数量限制</h3>
-                        <ul>
-                            <li>每个用户最多申请 3 个子域名</li>
-                            <li>每个子域名最多 10 个 DNS 记录</li>
-                        </ul>
-                    </div>
-                    <div class="rule-card">
-                        <h3>保留域名</h3>
-                        <ul>
-                            <li>系统保留：www, mail, api, admin</li>
-                            <li>服务保留：cdn, ftp, ns, dns</li>
-                            <li>开发保留：dev, test, staging</li>
-                        </ul>
+                <div class="rules-container">
+                    <h3>申请规则</h3>
+                    <div class="rules-grid">
+                        <div class="rule-card">
+                            <h4>域名格式</h4>
+                            <ul>
+                                <li>小写字母、数字和连字符组成</li>
+                                <li>长度在 3-63 个字符之间</li>
+                                <li>不能以连字符开头或结尾</li>
+                            </ul>
+                        </div>
+                        <div class="rule-card">
+                            <h4>数量限制</h4>
+                            <ul>
+                                <li>每个用户最多申请 3 个子域名</li>
+                                <li>每个子域名最多 10 个 DNS 记录</li>
+                            </ul>
+                        </div>
+                        <div class="rule-card">
+                            <h4>保留域名</h4>
+                            <ul>
+                                <li>系统保留：www, mail, api, admin</li>
+                                <li>服务保留：cdn, ftp, ns, dns</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -256,6 +288,11 @@
                         <h3>GitHub 仓库</h3>
                         <p>查看源码，提交 Issue 和 PR</p>
                     </a>
+                    <a href="https://github.com/bestzwei/LibreDomains/blob/main/docs/terms-of-service.md" target="_blank" class="doc-card">
+                        <div class="doc-icon">📋</div>
+                        <h3>服务条款</h3>
+                        <p>服务使用条款和用户协议</p>
+                    </a>
                 </div>
             </div>
         </section>
@@ -280,6 +317,7 @@
                     <ul>
                         <li><a href="https://github.com/bestzwei/LibreDomains/blob/main/docs/user-guide.md" target="_blank">用户指南</a></li>
                         <li><a href="https://github.com/bestzwei/LibreDomains/blob/main/docs/technical-doc.md" target="_blank">技术文档</a></li>
+                        <li><a href="https://github.com/bestzwei/LibreDomains/blob/main/docs/terms-of-service.md" target="_blank">服务条款</a></li>
                     </ul>
                 </div>
             </div>

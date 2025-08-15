@@ -7,6 +7,8 @@ on:
 
 jobs:
   generate-stats:
+    # 添加仓库检查，确保只在主仓库运行
+    if: github.repository == 'bestzwei/LibreDomains'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -26,18 +28,46 @@ jobs:
         
       - name: 生成统计报告
         run: |
+          # 设置 Python 路径以便正确导入模块
+          export PYTHONPATH=$PYTHONPATH:$(pwd)
+          
+          echo "📊 开始生成域名统计报告..."
+          echo "📅 生成时间: $(date '+%Y-%m-%d %H:%M:%S UTC')"
+          echo "📍 仓库: ${{ github.repository }}"
+          echo ""
+          
+          # 确保 docs 目录存在
+          mkdir -p docs
+          
           python scripts/stats/domain_stats.py --output docs/stats_report.md --json docs/stats.json
           
       - name: 更新统计报告
         run: |
-          # 提交变更
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add docs/stats_report.md docs/stats.json
-          git commit -m "更新域名统计报告" || echo "No changes to commit"
+          # 检查是否有变更
+          if git diff --quiet docs/stats_report.md docs/stats.json; then
+            echo "📋 统计数据无变化，跳过提交"
+          else
+            echo "📋 检测到统计数据变更，准备提交..."
+            
+            # 提交变更
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            git add docs/stats_report.md docs/stats.json
+            git commit -m "🤖 自动更新域名统计报告 ($(date '+%Y-%m-%d %H:%M'))"
+            
+            echo "✅ 统计报告已更新并提交"
+          fi
           
       - name: 推送更新
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
+          
+      - name: Fork 仓库提示
+        if: github.repository != 'bestzwei/LibreDomains'
+        run: |
+          echo "ℹ️ 此工作流仅在主仓库 bestzwei/LibreDomains 中运行"
+          echo "📝 Fork 仓库无需生成统计报告"
+          echo "🔍 如需查看统计数据，请使用统计脚本："
+          echo "   python scripts/stats/domain_stats.py --help"

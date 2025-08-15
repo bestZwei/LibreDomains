@@ -1,0 +1,17 @@
+{
+  "description": "个人博客网站",
+  "owner": {
+    "name": "soleil",
+    "github": "H-Soleil",
+    "email": "shao55236@gmail.com"
+  },
+  "records": [
+    {
+      "type": "A",
+      "name": "@",
+      "content": "36.45.113.240",
+      "ttl": 3600,
+      "proxied": false
+    }
+  ]
+}

@@ -207,16 +207,17 @@ def generate_stats_report(stats: Dict[str, Any], config: Dict[str, Any]) -> str:
     # 域名分布
     report.append("## 域名分布")
     report.append("")
-    report.append("| 域名 | 子域名数量 | 状态 |")
-    report.append("|------|------------|------|")
+    report.append("| 域名 | 描述 | 子域名数量 | 状态 |")
+    report.append("|------|------|------------|------|")
     
     for domain_config in config.get('domains', []):
         domain = domain_config.get('name')
+        description = domain_config.get('description', '无')
         enabled = domain_config.get('enabled', False)
         count = stats['subdomains_by_domain'].get(domain, 0)
         status = "启用" if enabled else "禁用"
         
-        report.append(f"| {domain} | {count} | {status} |")
+        report.append(f"| {domain} | {description} | {count} | {status} |")
     
     report.append("")
     

@@ -312,11 +312,13 @@ def list_subdomains(args):
     print(f"域名 '{args.domain}' 下有 {len(subdomains)} 个子域名:")
     for i, subdomain in enumerate(sorted(subdomains), 1):
         config = admin.get_subdomain_config(args.domain, subdomain)
+        description = config.get('description', '无描述') if config else '无描述'
         owner = config.get('owner', {}).get('name', '未知') if config else '未知'
         github = config.get('owner', {}).get('github', '未知') if config else '未知'
         records = len(config.get('records', [])) if config else 0
         
         print(f"{i}. {subdomain}.{args.domain}")
+        print(f"   描述: {description}")
         print(f"   所有者: {owner} (@{github})")
         print(f"   记录数: {records}")
     

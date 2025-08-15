@@ -1,0 +1,24 @@
+{
+  "description": "个人博客网站",
+  "owner": {
+    "name": "mordo",
+    "github": "mordo-alex",
+    "email": "19017748@sfcollege.edu"
+  },
+  "records": [
+    {
+      "type": "A",
+      "name": "@",
+      "content": "185.199.108.153",
+      "ttl": 3600,
+      "proxied": false
+    },
+    {
+      "type": "CNAME",
+      "name": "www",
+      "content": "mordo-alex.github.io",
+      "ttl": 3600,
+      "proxied": false
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "description": "dos游戏站",
+  "owner": {
+    "name": "zwei",
+    "github": "bestzwei", 
+    "email": "post@zwei.de.eu.org"
+  },
+  "records": [
+    {
+      "type": "A",
+      "name": "@",
+      "content": "38.247.80.209",
+      "ttl": 3600,
+      "proxied": true
+    }
+  ]
+}

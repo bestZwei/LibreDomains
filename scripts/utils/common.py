@@ -113,8 +113,10 @@ def is_valid_subdomain(subdomain: str, reserved_subdomains: List[str] = None) ->
         if subdomain.lower() in [r.lower() for r in reserved_subdomains]:
             return False
     
-    # 修复：与 domain_validator.py 保持一致，并确保小写
-    pattern = r'^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?$'
+    # 修复：与 domain_validator.py 保持一致，并确保小写，最少3个字符
+    if len(subdomain) < 3:
+        return False
+    pattern = r'^[a-z0-9]([a-z0-9-]{1,61}[a-z0-9])$'
     return bool(re.match(pattern, subdomain.lower()))
 
 

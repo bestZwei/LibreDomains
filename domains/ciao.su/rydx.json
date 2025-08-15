@@ -1,0 +1,24 @@
+{
+  "description": "moontv网站",
+  "owner": {
+    "name": "clown145",
+    "github": "clown145",
+    "email": "clown20070101@gmail.com"
+  },
+  "records": [
+    {
+      "type": "TXT",
+      "name": "@",
+      "content": "vc-domain-verify=rydx.ciao.su,1b1ee27dd1c9ea850f52",
+      "ttl": 3600,
+      "proxied": false
+    },
+    {
+      "type": "CNAME",
+      "name": "rydx",
+      "content": "81f87163e0d4128e.vercel-dns-017.com",
+      "ttl": 3600,
+      "proxied": false
+    }
+  ]
+}

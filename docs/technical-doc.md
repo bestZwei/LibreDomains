@@ -108,7 +108,7 @@ LibreDomains 是一个基于 GitHub 的二级域名分发服务，通过以下�
 主要函数：
 
 - `load_config(config_path=None)`: 加载配置
-- `is_valid_domain_name(domain)`: 验证域名格式
+- `is_valid_domain_name(domain)`: 验证域名格式（最少3个字符）
 - `is_reserved_subdomain(subdomain, config)`: 检查是否为保留子域名
 - `validate_domain_config(file_path, config)`: 验证域名配置文件
 - `validate_pull_request(pr_files, config)`: 验证 PR 中的文件
@@ -158,6 +158,7 @@ LibreDomains 是一个基于 GitHub 的二级域名分发服务，通过以下�
 
 ```json
 {
+  "description": "网站或服务的用途描述",
   "owner": {
     "name": "用户名称",
     "github": "GitHub用户名",
@@ -169,14 +170,14 @@ LibreDomains 是一个基于 GitHub 的二级域名分发服务，通过以下�
       "name": "@",
       "content": "185.199.108.153",
       "ttl": 3600,
-      "proxied": true
+      "proxied": false
     },
     {
       "type": "CNAME",
       "name": "www",
       "content": "username.github.io",
       "ttl": 3600,
-      "proxied": true
+      "proxied": false
     }
   ]
 }
