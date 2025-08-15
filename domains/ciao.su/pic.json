@@ -1,0 +1,16 @@
+{
+  "owner": {
+    "name": "mc838",
+    "github": "vipmc838",
+    "email": "vipmc838@hotmail.com"
+  },
+  "records": [
+    {
+      "type": "CNAME",
+      "name": "@",
+      "content": "92a59758.pic.sld.tw.dnsoe3.com"，
+      "ttl": 3600,
+      "proxied": true
+    }
+  ]
+}
