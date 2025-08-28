@@ -1,0 +1,19 @@
+{
+  "description": "lingsparkai.ciao.su - 由配置生成器创建",
+  "subdomain": "lingsparkai",
+  "domain": "ciao.su",
+  "owner": {
+    "name": "mouse",
+    "github": "sun",
+    "email": "mousesuncode@gmail.com"
+  },
+  "records": [
+    {
+      "type": "CNAME",
+      "name": "@",
+      "content": "lgy-in-dev.cnbita.com",
+      "ttl": 3600,
+      "proxied": false
+    }
+  ]
+}
