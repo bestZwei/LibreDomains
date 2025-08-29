@@ -1,0 +1,19 @@
+{
+    "description": "搭建LibreTV",
+    "subdomain": "love",
+    "domain": "ciao.su",
+    "owner": {
+        "name": "Sherlock",
+        "github": "oversizexl",
+        "email": "oversizexl@gmail.com"
+    },
+    "records": [
+        {
+            "type": "CNAME",
+            "name": "love",
+            "content": "b55df8da554487f7.vercel-dns-017.com",
+            "ttl": 3600,
+            "proxied": false
+        }
+    ]
+}
