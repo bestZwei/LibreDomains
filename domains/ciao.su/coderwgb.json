@@ -1,0 +1,19 @@
+{
+  "description": "搭建网站部署页面",
+  "subdomain": "coderwgb",
+  "domain": "ciao.su",
+  "owner": {
+    "name": "CoderWGB",
+    "github": "WangGuibin",
+    "email": "864562082@qq.com"
+  },
+  "records": [
+    {
+      "type": "CNAME",
+      "name": "www",
+      "content": "muddy-art-40ed.iq67bo0o.workers.dev",
+      "ttl": 3600,
+      "proxied": true
+    }
+  ]
+}
