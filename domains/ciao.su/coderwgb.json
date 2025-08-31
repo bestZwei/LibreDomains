@@ -9,23 +9,9 @@
   },
   "records": [
     {
-      "type": "A",
-      "name": "@",
-      "content": "104.21.47.42",
-      "ttl": 3600,
-      "proxied": false
-    },
-    {
       "type": "CNAME",
       "name": "www",
       "content": "muddy-art-40ed.iq67bo0o.workers.dev",
-      "ttl": 3600,
-      "proxied": false
-    },
-    {
-      "type": "A",
-      "name": "@",
-      "content": "172.67.144.113",
       "ttl": 3600,
       "proxied": false
     }
