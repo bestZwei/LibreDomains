@@ -1,4 +1,7 @@
 {
+  "description": "搭建网站部署页面",
+  "subdomain": "coderwgb",
+  "domain": "ciao.su",
   "owner": {
     "name": "CoderWGB",
     "github": "WangGuibin",
