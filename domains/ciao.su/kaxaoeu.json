@@ -9,9 +9,9 @@
   },
   "records": [
     {
-      "type": "AAAA",
+      "type": "A",
       "name": "@",
-      "content": "fe80::979a:7d9f:6efe:f6c7%2",
+      "content": "10.149.150.172",
       "ttl": 3600,
       "proxied": false
     }
