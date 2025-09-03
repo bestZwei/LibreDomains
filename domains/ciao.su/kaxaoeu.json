@@ -1,0 +1,19 @@
+{
+  "description": "自己学习使用",
+  "subdomain": "kaxaoeu",
+  "domain": "ciao.su",
+  "owner": {
+    "name": "刘兴发",
+    "github": "XAOKAN",
+    "email": "1415592586@qq.com"
+  },
+  "records": [
+    {
+      "type": "AAAA",
+      "name": "@",
+      "content": "fe80::979a:7d9f:6efe:f6c7%2",
+      "ttl": 3600,
+      "proxied": false
+    }
+  ]
+}
