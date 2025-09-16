@@ -1,0 +1,19 @@
+{
+    "description": "私人music",
+    "subdomain": "music",
+    "domain": "ciao.su",
+    "owner": {
+        "name": "sherlock",
+        "github": "oversizexl",
+        "email": "oversizexl@gmail.com"
+    },
+    "records": [
+        {
+            "type": "A",
+            "name": "@",
+            "content": "music-neon-nine.vercel.app",
+            "ttl": 3600,
+            "proxied": false
+        }
+    ]
+}
