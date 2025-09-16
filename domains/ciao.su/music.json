@@ -9,7 +9,7 @@
     },
     "records": [
         {
-            "type": "A",
+            "type": "CNAME",
             "name": "@",
             "content": "music-neon-nine.vercel.app",
             "ttl": 3600,
