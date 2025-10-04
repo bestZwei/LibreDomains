@@ -1,0 +1,26 @@
+{
+  "description": "Minecraft服务器",
+  "subdomain": "dennis",
+  "domain": "ciao.su",
+  "owner": {
+    "name": "Dennis",
+    "github": "Dennis114514",
+    "email": "Dennis1111@126.com"
+  },
+  "records": [
+    {
+      "type": "SRV",
+      "name": "_minecraft._tcp",
+      "content": "0 1 ",
+      "ttl": 3600,
+      "proxied": false
+    },
+    {
+      "type": "A",
+      "name": "@",
+      "content": "154.9.26.25",
+      "ttl": 80,
+      "proxied": false
+    }
+  ]
+}
