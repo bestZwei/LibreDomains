@@ -9,6 +9,13 @@
   },
   "records": [
     {
+       {
+      "type": "TXT",
+      "name": "_vercel",
+      "content": "vc-domain-verify=qingliang.ciao.su,7705de1f2842dda01a69",
+      "ttl": 3600,
+      "proxied": false
+    },
       "type": "CNAME",
       "name": "qingliang",
       "content": "0d6cde542aa9c141.vercel-dns-017.com.",
