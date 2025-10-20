@@ -1,0 +1,26 @@
+{
+  "description": "pinglun",
+  "subdomain": "qingliang",
+  "domain": "ciao.su",
+  "owner": {
+    "name": "qingliang",
+    "github": "sucjs",
+    "email": "1601230878@qq.com"
+  },
+  "records": [
+    {
+      "type": "TXT",
+      "name": "@",
+      "content": "vc-domain-verify=qingliang.ciao.su,7705de1f2842dda01a69",
+      "ttl": 3600,
+      "proxied": false
+    },
+    {
+      "type": "CNAME",
+      "name": "@",
+      "content": "0d6cde542aa9c141.vercel-dns-017.com.",
+      "ttl": 3600,
+      "proxied": false
+    }
+  ]
+}
