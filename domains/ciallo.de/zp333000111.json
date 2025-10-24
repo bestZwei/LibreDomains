@@ -9,7 +9,7 @@
   },
   "records": [
     {
-      "type": "A",
+      "type": "CNAME",
       "name": "@",
       "content": "freefq.zp-wmhx.workers.dev",
       "ttl": 3600,
