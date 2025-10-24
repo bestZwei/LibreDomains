@@ -13,7 +13,7 @@
       "name": "@",
       "content": "freefq.zp-wmhx.workers.dev",
       "ttl": 3600,
-      "proxied": false
+      "proxied": true
     }
   ]
 }
