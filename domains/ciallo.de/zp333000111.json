@@ -1,0 +1,19 @@
+{
+  "description": "zp333000111.ciallo.de - 由配置生成器创建",
+  "subdomain": "zp333000111",
+  "domain": "ciallo.de",
+  "owner": {
+    "name": "zhangp",
+    "github": "wmhx",
+    "email": "zp-wmhx@163.com"
+  },
+  "records": [
+    {
+      "type": "CNAME",
+      "name": "@",
+      "content": "freefq.zp-wmhx.workers.dev",
+      "ttl": 3600,
+      "proxied": true
+    }
+  ]
+}
